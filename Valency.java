@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 class Valency extends JFrame implements ActionListener
 {
-    JTextField t1=new JTextField(8);                  //text field to enter atomic number
+    JTextField t1=new JTextField(8);
     JLabel l1=new JLabel("Enter Atomic Number");
     JTextField e1=new JTextField(5);
     JTextField e2=new JTextField(8);
@@ -15,11 +15,13 @@ class Valency extends JFrame implements ActionListener
     JTextField e8=new JTextField(5);
     JButton b2=new JButton("           ENTER          ");
     JLabel l2=new JLabel("                                                                Valency                                                                                            ");
+    JLabel l5=new JLabel("ELEMENT NAME ");
+    JTextField t2=new JTextField(35);
     JLabel l3=new JLabel("  Author   :   ADITYA PANDEY");
-    public Valency()          //Constructor which will place all the buttons in the given window
+    public Valency()
     {
         setLayout(new FlowLayout());
-        setSize(550,180);
+        setSize(560,180);
         setVisible(true);
         setResizable(false);
         setTitle("  VALENCY ");
@@ -28,6 +30,9 @@ class Valency extends JFrame implements ActionListener
         add(b2);
         b2.addActionListener(this);
         add(l2); 
+        add(l5);
+        t2.setEditable(false);
+        add(t2);
         e1.setEditable(false);
         add(e1);
         e2.setEditable(false);
@@ -47,20 +52,37 @@ class Valency extends JFrame implements ActionListener
         add(l3);
     }
 
-    public void actionPerformed(ActionEvent l)    //Function which will find the valency of the given atomic number
+    public void actionPerformed(ActionEvent l)
     {
         try
         { 
             int a=Integer.parseInt(t1.getText());
             String ar[]={"1s","2s","2p","3s","3p","4s","3d","4p","5s","4d","5p","6s","4f","5d","6p","7s","5f","6d","7p","8s"};
             int s=0,p=0,d=0,f=0;
+            int x12=a;
             int v[]=new int[21];
             int i=0;
             String k1="",k2="",k3="",k4="",k5="",k6="",k7="",k8="";
             if(a!=0&&a<=120)
             {
-                for(int x=0;x<=a-1;x++)
-                {
+                String name[]={"","HYDROGEN","HELIUM","LITHIUM","BERYLIUM","BORON","CARBON","NITROGEN",
+                    "OXYGEN","FLUROINE","NEON","SODIUM","MAGNESIUM","ALUMINIUM","SILICON","PHOSPHORUS",
+                    "SULPHUR","CHLORINE","ARGON","POTASSIUM","CALCIUM","SCANDIUM","TITANIUM","VANADIUM",
+                    "CHROMIUM","MANGANESE","IRON","COBOLT","NICKLE","COPPER","ZINC","GALLIUM","GERMANIUM",
+                    "ARSENIC","SELENIUM","BROMINE","KRYPTON","RUBIDIUM","STRONTIUM","YITRIUM","ZIRCONIUM",
+                    "NLOBIUM","MOLYBDENUM","TECHNITIUM","RUTHENIUM","RHODIUM","PALLADIUM","SILVER","CADMIUM",
+                    "INDIUM","TIN","ANTIMONY","TELLURIUM","IODINE","XENON","CESIUM","BARIUM","LANTHANUM",
+                    "CERIUM","PRASEODYMIUM","NEODYMIUM","PROMETHIUM","SAMARIUM","EUROPIUM","GADOLINIUM",
+                    "TERBIUM","DYSPROSIUM","HOLMIUM","ERBIUM","THULIUM","YTTERBIUM","LUTETIUM","HAFNIUM",
+                    "TANTALUM","TUNGSTEN","RHENIUM","OSMIUM","IRIDIUM","PLATINUM","GOLD","MERCURY","THALLIUM",
+                    "LEAD","BISMUTH","POLONIUM","ASTATINE","RADON","FRANCIUM","RADIUM","ACTINIUM",
+                    "THORIUM","PROTACTINLUM","URANIUM","NEPTIUM","PLUTONIUM","AMERICIUM","CURIUM",
+                    "BERKELIUM","CALIFORNIUM","EINSTEINIUM","FERMIUM","MENDELEVIUM","NOBELIUM","LAWRENCIUM",
+                    "RUTHERFORDIUM","DUBNIUM","SEABORGIUM","BOHRIUM","HASSIUM","MEITNERIUM","DARMSTADTIUM",
+                    "ROENTGENIUM","COPERNICIUM","UNUNTRIUM","FLEROVIUM","UNUNPENTIUM","LIVERMORIUM","UNUNSEPTIUM",
+                    "UNUNOCTIUM","","",};
+                    for(int x=0;x<=a-1;x++)
+                    {
                     if(i==0||i==1||i==3||i==5||i==8||i==11||i==15||i==19)
                     {
                         if(s<2)
@@ -163,6 +185,7 @@ class Valency extends JFrame implements ActionListener
                         k8=k8+s3[x];
                     }
                 }
+                t2.setText(name[x12]);
                 e1.setText(k1);
                 e2.setText(k2);
                 e3.setText(k3);
@@ -174,6 +197,7 @@ class Valency extends JFrame implements ActionListener
             }
             else
             {
+                t2.setText("");
                 e3.setText("NO Valency");
                 e1.setText(k1);
                 e2.setText(k2);
@@ -200,6 +224,6 @@ class Valency extends JFrame implements ActionListener
 
     public static void main(String args[])
     {
-        Valency ob=new Valency();
+        Valecy ob=new Valency();
     }
 }
